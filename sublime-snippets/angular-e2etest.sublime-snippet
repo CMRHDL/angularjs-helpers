@@ -3,13 +3,13 @@
 (function() {
     'use strict';
 
-    var TestPage = require('./seed.testPage.js');
+    var ${1:TestPage} = require('./seed.${1:TestPage}.js');
 
     describe('app', function() {
         var page;
 
         beforeEach(function() {
-            page = new TestPage();
+            page = new ${1:TestPage}();
         });
 
         afterEach(function() {
