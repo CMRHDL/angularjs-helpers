@@ -1,0 +1,47 @@
+<snippet>
+	<content><![CDATA[
+(function() {
+    'use strict';
+    angular.module('app').controller('${1:Ctrl}', ${1:Ctrl});
+
+    //${1:Ctrl}.$inject = [ '' ];
+    function ${1:Ctrl}() {
+        var vm = this;
+
+        // variables
+        vm. = ;
+
+        // public functions
+        vm.someFunctionOne = someFunctionOne;
+        vm.someFunctionTwo = someFunctionTwo;
+        vm.someFunctionThree = someFunctionThree;
+        vm.someFunctionFour = someFunctionFour;
+        vm.someFunctionFive = someFunctionFive;
+
+        //in case something needs to be done on load
+        init();
+
+        function init() {
+        }
+
+        function someFunctionOne() {
+        }
+
+        function someFunctionTwo() {
+        }
+
+        function someFunctionThree() {
+        }
+
+        function someFunctionFour() {
+        }
+
+        function someFunctionFive() {
+        }
+    }
+})();
+]]></content>
+	<tabTrigger>angular-controller</tabTrigger>
+	<scope>source.js</scope>
+    <description>Angular</description>
+</snippet>

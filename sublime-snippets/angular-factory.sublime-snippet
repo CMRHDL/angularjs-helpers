@@ -1,0 +1,31 @@
+<snippet>
+	<content><![CDATA[
+(function() {
+    'use strict';
+    //factory returns something. methods or objects.
+    angular.module('app').factory('${1:factoryName}', ${1:factoryName});
+
+    //${1:factoryName}.$inject = [''];
+    function ${1:factoryName}() {
+
+        var factoryObject = {};
+
+        factoryObject.variable = ;
+
+        factoryObject.functionOne = function() {
+        };
+
+        factoryObject.functionTwo = function() {
+        };
+
+        factoryObject.functionThree = function() {
+        };
+
+        return factoryObject;
+    }
+})();
+]]></content>
+	<tabTrigger>angular-factory</tabTrigger>
+	<scope>source.js</scope>
+    <description>Angular</description>
+</snippet>

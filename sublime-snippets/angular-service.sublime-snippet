@@ -1,0 +1,27 @@
+<snippet>
+	<content><![CDATA[
+(function() {
+    'use strict';
+    //service is called with new, therefore everything is binded to "this"
+    angular.module('app').service('${1:serviceName}', ${1:serviceName});
+
+    //${1:serviceName}.$inject = [''];
+    function ${1:serviceName}() {
+
+        //http://stackoverflow.com/a/27117322
+        var service = this; // jshint ignore:line
+
+        service.variable = ;
+
+        service.functionOne = function () {
+        };
+
+        service.functionTwo = function () {
+        };
+    }
+})();
+]]></content>
+	<tabTrigger>angular-service</tabTrigger>
+	<scope>source.js</scope>
+    <description>Angular.js</description>
+</snippet>
