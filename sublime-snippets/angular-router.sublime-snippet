@@ -1,0 +1,28 @@
+<snippet>
+    <content><![CDATA[
+(function() {
+
+    function config($routeProvider){
+      $routeProvider.
+        when('/', {
+          templateUrl: '.html'
+        }).
+        when('/', {
+          templateUrl: '.html'
+        }).
+        when('/', {
+          templateUrl: '.html'
+        otherwise({
+          redirectTo:'/'
+        });
+    }
+
+    angular.module('app',['ngRoute']);
+    angular.module('app').config(config);
+
+}());
+]]></content>
+    <tabTrigger>angular-router</tabTrigger>
+    <scope>source.js</scope>
+    <description>Angular</description>
+</snippet>

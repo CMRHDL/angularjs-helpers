@@ -1,0 +1,10 @@
+<snippet>
+    <content><![CDATA[
+${1:object}.forEach(function(entry){
+    
+});
+]]></content>
+    <tabTrigger>js-forEach</tabTrigger>
+    <scope>source.js</scope>
+    <description>JavaScript</description>
+</snippet>

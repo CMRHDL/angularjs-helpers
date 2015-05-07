@@ -23,7 +23,7 @@
     module.exports = ${1:TestPage};
 })();
 ]]></content>
-	<tabTrigger>angular-${1:TestPage}</tabTrigger>
+	<tabTrigger>angular-TestPage</tabTrigger>
 	<scope>source.js</scope>
     <description>Angular</description>
 </snippet>
