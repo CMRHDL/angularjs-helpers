@@ -2,17 +2,18 @@
     <content><![CDATA[
 (function() {
 
-    function config($routeProvider){
-      $routeProvider.
+    function config(\$routeProvider){
+      \$routeProvider.
         when('/', {
-          templateUrl: '.html'
-        }).
-        when('/', {
-          templateUrl: '.html'
-        }).
-        when('/', {
-          templateUrl: '.html'
-        otherwise({
+          templateUrl: 'index.html'
+        })
+        .when('/${1:routeOne}', {
+          templateUrl: '${1:routeOne}.html'
+        })
+        .when('/${2:routeOne}', {
+          templateUrl: '${2:routeOne}.html'
+        })
+        .otherwise({
           redirectTo:'/'
         });
     }
