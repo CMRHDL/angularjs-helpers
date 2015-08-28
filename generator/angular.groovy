@@ -4,6 +4,37 @@ new File("app.js").createNewFile()
 new File("../test/spec/controllers/about.js").delete()
 new File("../test/spec/controllers/main.js").delete()
 
+new File("navbar").mkdir()
+new File("navbar/navbar.html").createNewFile()
+new File("navbar/navbar.controller.js").createNewFile()
+new File("../test/spec/controllers/navbar.controller.js").createNewFile()
+
+new File("navbar/navbar.html").text = """<div class="jumbotron">
+   <h1>Navbar</h1>
+</div>"""
+
+new File("../test/spec/controllers/navbar.controller.js").text = """'use strict';
+
+describe('Controller: NavbarCtrl', function () {
+
+  beforeEach(module('${this.args[0]}'));
+
+  var NavbarCtrl, scope;
+
+  beforeEach(inject(function (\$controller, \$rootScope) {
+    scope = \$rootScope.\$new();
+    NavbarCtrl = \$controller('NavbarCtrl', {
+      \$scope: scope
+    });
+  }));
+
+  it('should attach a list of awesomeThings to the scope', function () {
+    //expect(scope.awesomeThings.length).toBe(3);
+  });
+});
+
+"""
+
 this.args[1..this.args.length-1].each { createTemplate(it) }
 
 def createTemplate(entry) {
@@ -58,10 +89,9 @@ describe('Controller: ${entryCap}Ctrl', function () {
   }));
 
   it('should attach a list of awesomeThings to the scope', function () {
-    expect(scope.awesomeThings.length).toBe(3);
+    //expect(scope.awesomeThings.length).toBe(3);
   });
 });
-
 """
 
 }
@@ -80,9 +110,13 @@ def whens = """        .when('/', {
         })
 """
 
-for (def entry in this.args[2..(this.args.length-1)]) {
+for (def entry in this.args[1..(this.args.length-1)]) {
     def entryCap = entry.capitalize()
     includes += "\t<script src=\"${entry}/${entry}.controller.js\"></script>\n"
+}
+
+for (def entry in this.args[2..(this.args.length-1)]) {
+    def entryCap = entry.capitalize()
     whens += """        .when('/${entry}', {
           templateUrl: '${entry}/${entry}.html',
           controller : '${entryCap}Ctrl',
@@ -100,7 +134,11 @@ index.text = """<!doctype html>
     <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.css" />
 </head>
 <body>
-    <!--<div ng-view></div>-->
+    <my-nav></my-nav>
+
+    <div class="jumbotron">
+        <div ng-view></div>
+    </div>
 
     <div class="footer">
         <p><span class="glyphicon glyphicon-heart"></span>Angular</p>
@@ -127,5 +165,21 @@ ${whens}        .otherwise({
     angular.module('${this.args[0]}').config(config);
 
 }());
+"""
+
+new File("navbar/navbar.controller.js").text = """(function() {
+    'use strict';
+    angular.module('${this.args[0]}').controller('NavbarCtrl', NavbarCtrl);
+
+    //NavbarCtrl.\$inject = [ '' ];
+    function NavbarCtrl() {
+        var vm = this;
+
+        vm.navs = [
+            
+        ];
+
+    }
+})();
 """
 
