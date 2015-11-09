@@ -1,0 +1,40 @@
+<snippet>
+    <content><![CDATA[
+(function() {
+    'use strict';
+    angular.module('app').directive('${1:DIRECTIVE}', ${1:DIRECTIVE});
+
+    ${1:DIRECTIVE}.\$inject = [  ];
+    function ${1:DIRECTIVE}() {
+        return {
+            controller : 'CTRL',
+            controllerAs : 'c',
+            restrict: 'A',
+            scope: {
+                foo: '@',
+                bar: '=',
+            },
+            require: ['ngModel', '^${1:DIRECTIVE}'],
+            bindToController: true,
+            link: function(scope, element, attrs, ctrls) {
+
+                var ngModel = ctrls[0];
+                var ctrl = ctrls[1];
+                ctrl.model = ngModel;
+
+                // init Model
+                ngModel.\$setViewValue();
+                ngModel.\$render();
+
+                element.bind("change",function(event){
+                });
+            },
+        };
+    }
+})();
+
+]]></content>
+    <tabTrigger>angular-directive</tabTrigger>
+    <scope>source.js</scope>
+    <description>Angular</description>
+</snippet>
