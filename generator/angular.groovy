@@ -147,15 +147,16 @@ for (def entry in this.args[1..(this.args.length-1)]) {
     navbarEntrys += """            {visibleName: '${entryCap}', name: '${entry}', css: ''},
 """
 }
-
-for (def entry in this.args[2..(this.args.length-1)]) {
-    def entryCap = entry.capitalize()
-    whens += """        .when('/${entry}', {
-          templateUrl: '${entry}/${entry}.html',
-          controller : '${entryCap}Ctrl',
-          controllerAs : 'vm',
-        })
-"""
+if(this.args.length > 2) {
+  for (def entry in this.args[2..(this.args.length-1)]) {
+      def entryCap = entry.capitalize()
+      whens += """        .when('/${entry}', {
+            templateUrl: '${entry}/${entry}.html',
+            controller : '${entryCap}Ctrl',
+            controllerAs : 'vm',
+          })
+  """
+  }
 }
 
 def index = new File("index.html")
