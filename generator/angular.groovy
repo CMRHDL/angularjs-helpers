@@ -1,3 +1,5 @@
+def location = new File(getClass().protectionDomain.codeSource.location.path).parent
+
 new File("index.html").createNewFile()
 new File("app.js").createNewFile()
 
@@ -13,18 +15,8 @@ new File("navbar/navbar.controller.js").createNewFile()
 new File("navbar/navbar.directive.js").createNewFile()
 new File("../test/spec/controllers/navbar.controller.js").createNewFile()
 
-new File("navbar/navbar.html").text = """
-<div class="header">
-  <div class="navbar navbar-default navbar-fixed-top">
-    <ul class="nav navbar-nav">
-      <li ng-repeat="tab in nav.tabs" ng-class="[nav.isTabActive(tab.name)]" ng-click="nav.setActiveTab(tab.name)" >
-        <a ng-href="#/{{tab.name}}"><span class="{{tab.css}}"></span> {{tab.visibleName}}
-        </a>
-      </li>
-    </ul>
-  </div>
-</div>
-"""
+new File("navbar/navbar.html").text = new File(location + "/navbar.html").text
+new File("style/style.css").text = new File(location + "/style.css").text
 
 new File("navbar/navbar.directive.js").text = """
 (function() {
@@ -169,6 +161,7 @@ index.text = """<!doctype html>
 <html ng-app="${this.args[0]}">
 <head>
     <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="style/style.css" />
 </head>
 <body>
     <my-nav></my-nav>
@@ -218,6 +211,7 @@ new File("navbar/navbar.controller.js").text = """(function() {
         nav.isTabActive = isTabActive;
         nav.setActiveTab = setActiveTab;
 
+        // http://getbootstrap.com/components/
         nav.tabs = [
 ${navbarEntrys}
         ];

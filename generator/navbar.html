@@ -1,0 +1,25 @@
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#/index" ng-class="[nav.isTabActive(nav.tabs[0].name)]" ng-click="nav.setActiveTab(nav.tabs[0].name)"><span class="glyphicon glyphicon-home"></span> {{nav.tabs[0].visibleName}}</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse" aria-expanded="false" style="height: 1px;">
+      <ul class="nav masthead-nav">
+        <li ng-repeat="tab in nav.tabs" ng-class="[nav.isTabActive(tab.name)]" ng-click="nav.setActiveTab(tab.name)">
+          <a href="#/{{tab.name}}">
+            <div class="hidden-sm">
+              <span class="glyphicon {{tab.css}}"></span> {{tab.visibleName}}<b class="caret"></b>
+            </div>
+            <span class="glyphicon {{tab.css}} visible-sm" ng-attr-title="{{tab.visibleName}}"></span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
