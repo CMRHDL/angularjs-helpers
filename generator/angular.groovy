@@ -1,65 +1,54 @@
 def location = new File(getClass().protectionDomain.codeSource.location.path).parent
 
-new File("index.html").createNewFile()
-new File("app.js").createNewFile()
+createFiles();
+createTemplates();
+def routes = createRouting(location);
+def includesAndEntrys = createIncludesAndEntrys();
+def includes = includesAndEntrys[0];
+def navbarEntrys = includesAndEntrys[1];
 
-new File("../test/spec/controllers/about.js").delete()
-new File("../test/spec/controllers/main.js").delete()
+def app = new File("app.js")
 
-new File("navbar").mkdir()
-new File("provider").mkdir()
-new File("style").mkdir()
-new File("style/style.css").createNewFile()
-new File("navbar/navbar.html").createNewFile()
-new File("navbar/navbar.controller.js").createNewFile()
-new File("navbar/navbar.directive.js").createNewFile()
-new File("../test/spec/controllers/navbar.controller.js").createNewFile()
+app.text = """(function() {
+
+    function config(\$routeProvider){
+      \$routeProvider
+${routes}        .otherwise({
+          redirectTo:'/'
+        });
+    }
+
+    angular.module('${this.args[0]}',['ngRoute']);
+    angular.module('${this.args[0]}').config(config);
+
+}());
+"""
 
 new File("navbar/navbar.html").text = new File(location + "/navbar.html").text
 new File("style/style.css").text = new File(location + "/style.css").text
+new File("navbar/navbar.directive.js").text = new File(location + "/navbar.js").text.replace(/QQappQQ/, this.args[0])
+new File("../test/spec/controllers/navbar.controller.js").text = new File(location + "/navbar.spec.js").text.replace(/QQappQQ/, this.args[0])
+new File("index.html").text = new File(location + "/index.html").text.replace(/QQappQQ/, this.args[0]).replace(/QQincludeQQ/, includes)
+new File("navbar/navbar.controller.js").text =  new File(location + "/navbar.controller.js").text.replace(/QQappQQ/, this.args[0]).replace(/QQnavbarEntrysQQ/, navbarEntrys)
 
-new File("navbar/navbar.directive.js").text = """
-(function() {
-  'use strict';
-  angular.module('${this.args[0]}').directive('myNav', myNav);
+def createFiles() {
+    new File("../test/spec/controllers/about.js").delete()
+    new File("../test/spec/controllers/main.js").delete()
+    new File("navbar").mkdir()
+    new File("provider").mkdir()
+    new File("style").mkdir()
+    new File("index.html").createNewFile()
+    new File("app.js").createNewFile()
+    new File("style/style.css").createNewFile()
+    new File("navbar/navbar.html").createNewFile()
+    new File("navbar/navbar.controller.js").createNewFile()
+    new File("navbar/navbar.directive.js").createNewFile()
+    new File("../test/spec/controllers/navbar.controller.js").createNewFile()
+}
 
-  //myNav. = [ '' ];
-  function myNav() {
-    return {
-      restrict: 'E',
-      templateUrl: 'navbar/navbar.html',
-      controller: 'NavbarCtrl',
-      controllerAs: 'nav',
-      link: function(scope, element, attrs, tabsCtrl) {
-      },
-    };
-  }
-})();
-"""
-
-new File("../test/spec/controllers/navbar.controller.js").text = """'use strict';
-
-describe('Controller: NavbarCtrl', function () {
-
-  beforeEach(module('${this.args[0]}'));
-
-  var NavbarCtrl, scope;
-
-  beforeEach(inject(function (\$controller, \$rootScope) {
-    scope = \$rootScope.\$new();
-    NavbarCtrl = \$controller('NavbarCtrl', {
-      \$scope: scope
-    });
-  }));
-
-  it('should attach a list of awesomeThings to the scope', function () {
-    //expect(scope.awesomeThings.length).toBe(3);
-  });
-});
-
-"""
-
-this.args[1..this.args.length-1].each { createTemplate(it) }
+def createTemplates() {
+    this.args[1..this.args.length-1].each { createTemplate(it) }
+}
 
 def createTemplate(entry) {
     new File(entry).mkdir()
@@ -117,112 +106,43 @@ describe('Controller: ${entryCap}Ctrl', function () {
   });
 });
 """
-
 }
 
-def includes = ""
-def argsOneCap = this.args[1].capitalize()
-def whens = """        .when('/', {
-          templateUrl: '${this.args[1]}/${this.args[1]}.html',
-          controller : '${argsOneCap}Ctrl',
-          controllerAs : 'vm',
-        })
-        .when('/${this.args[1]}', {
-          templateUrl: '${this.args[1]}/${this.args[1]}.html',
-          controller : '${argsOneCap}Ctrl',
-          controllerAs : 'vm',
-        })
-"""
+def createRouting(location) {
+    def argsOneCap = this.args[1].capitalize()
+    def whens =  new File(location + "/firstRoute.txt").text.replace(/QQargs1QQ/, this.args[1]).replace(/QQargs1CapQQ/, argsOneCap)
 
-def navbarEntrys = ""
-
-for (def entry in this.args[1..(this.args.length-1)]) {
-    def entryCap = entry.capitalize()
-    includes += "\t<script src=\"${entry}/${entry}.controller.js\"></script>\n"
-    navbarEntrys += """            {visibleName: '${entryCap}', name: '${entry}', css: ''},
-"""
-}
-if(this.args.length > 2) {
-  for (def entry in this.args[2..(this.args.length-1)]) {
-      def entryCap = entry.capitalize()
-      whens += """        .when('/${entry}', {
-            templateUrl: '${entry}/${entry}.html',
-            controller : '${entryCap}Ctrl',
-            controllerAs : 'vm',
-          })
-  """
-  }
-}
-
-def index = new File("index.html")
-def app = new File("app.js")
-
-index.text = """<!doctype html>
-<html ng-app="${this.args[0]}">
-<head>
-    <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.css" />
-    <link rel="stylesheet" href="style/style.css" />
-</head>
-<body>
-    <my-nav></my-nav>
-
-    <div ng-view></div>
-
-    <div class="footer">
-        <p><span class="glyphicon glyphicon-heart"></span>Angular</p>
-    </div>
-
-    <script src="../bower_components/angular/angular.js"></script>
-    <script src="../bower_components/angular-route/angular-route.js"></script>
-    <script src="app.js"></script>
-    <script src="navbar/navbar.directive.js"></script>
-    <script src="navbar/navbar.controller.js"></script>
-${includes}
-</body>
-</html>
-"""
-
-app.text = """(function() {
-
-    function config(\$routeProvider){
-      \$routeProvider
-${whens}        .otherwise({
-          redirectTo:'/'
-        });
-    }
-
-    angular.module('${this.args[0]}',['ngRoute']);
-    angular.module('${this.args[0]}').config(config);
-
-}());
-"""
-
-new File("navbar/navbar.controller.js").text = """(function() {
-    'use strict';
-    angular.module('${this.args[0]}').controller('NavbarCtrl', NavbarCtrl);
-
-    NavbarCtrl.\$inject = [ '\$location' ];
-    function NavbarCtrl(\$location) {
-        var nav = this;
-
-
-        var activeTab = \$location.url().substr(1,\$location.url().length) !== '' ? \$location.url().substr(1,\$location.url().length) : 'overview';
-
-        nav.isTabActive = isTabActive;
-        nav.setActiveTab = setActiveTab;
-
-        // http://getbootstrap.com/components/
-        nav.tabs = [
-${navbarEntrys}
-        ];
-
-        function isTabActive(tab) {
-          return activeTab === tab ? 'active' : '';
-        }
-        function setActiveTab(tab) {
-          activeTab = tab;
+    if(this.args.length > 2) {
+        for (def entry in this.args[2..(this.args.length-1)]) {
+            def entryCap = entry.capitalize()
+            whens += new File(location + "/route.txt").text.replace(/QQentryQQ/, entry).replace(/QQentryCapQQ/, entryCap)
         }
     }
-})();
-"""
+    return whens;
+}
 
+def createIncludesAndEntrys() {
+    def cssComponents = [
+        'glyphicon glyphicon-plus',
+        'glyphicon glyphicon-tint',
+        'glyphicon glyphicon-envelope',
+        'glyphicon glyphicon-thumbs-up',
+        'glyphicon glyphicon-pencil',
+        'glyphicon glyphicon-apple',
+        'glyphicon glyphicon-ok',
+        'glyphicon glyphicon-tag',
+        'glyphicon glyphicon-facetime-video'
+    ]
+    def includes = ""
+    def navbarEntrys = ""
+    for (def entry in this.args[1..(this.args.length-1)]) {
+        def entryCap = entry.capitalize()
+        def index = new Random().nextInt(cssComponents.size())
+        def css = cssComponents[index]
+        cssComponents = cssComponents - css
+        includes += "\t<script src=\"${entry}/${entry}.controller.js\"></script>\n"
+        navbarEntrys += """            {visibleName: '${entryCap}', name: '${entry}', css: '${css}'},\n"""
+    }
+    
+    return [includes, navbarEntrys];
+}
