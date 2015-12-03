@@ -1,13 +1,13 @@
 (function() {
 
-    function config($routeProvider){
-      $routeProvider
+  function config($routeProvider){
+    $routeProvider
 QQroutesQQ.otherwise({
-          redirectTo:'/'
-        });
-    }
+      redirectTo:'/'
+    });
+  }
 
-    angular.module('QQappQQ',['ngRoute']);
-    angular.module('QQappQQ').config(config);
+  angular.module('QQappQQ',['ngRoute']);
+  angular.module('QQappQQ').config(config);
 
 }());

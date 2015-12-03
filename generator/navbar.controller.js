@@ -1,27 +1,30 @@
 (function() {
-    'use strict';
-    angular.module('QQappQQ').controller('NavbarCtrl', NavbarCtrl);
+  'use strict';
+  angular.module('QQappQQ').controller('NavbarCtrl', NavbarCtrl);
 
-    NavbarCtrl.$inject = [ '$location' ];
-    function NavbarCtrl($location) {
-        var nav = this;
+  NavbarCtrl.$inject = [ '$location', '$scope' ];
+  function NavbarCtrl($location, $scope) {
+    var nav = this;
 
+    nav.isActive = isActive;
 
-        var activeTab = $location.url().substr(1,$location.url().length) !== '' ? $location.url().substr(1,$location.url().length) : 'overview';
+    var activeTab = getLocation();
 
-        nav.isTabActive = isTabActive;
-        nav.setActiveTab = setActiveTab;
+    $scope.$on('$locationChangeSuccess', function() {
+      activeTab = getLocation();
+    });
 
-        // http://getbootstrap.com/components/
-        nav.tabs = [
+    // http://getbootstrap.com/components/
+    nav.tabs = [
 QQnavbarEntrysQQ
-        ];
+    ];
 
-        function isTabActive(tab) {
-          return activeTab === tab ? 'active' : '';
-        }
-        function setActiveTab(tab) {
-          activeTab = tab;
-        }
+    function isActive(tab) {
+      return activeTab === tab ? 'active' : '';
     }
+
+    function getLocation() {
+      return $location.url().substr(1,$location.url().length) !== '' ? $location.url().substr(1,$location.url().length) : nav.tabs[0].name;
+    }
+  }
 })();

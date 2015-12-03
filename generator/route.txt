@@ -1,5 +1,5 @@
 .when('/QQentryQQ', {
-                templateUrl: 'QQentryQQ/QQentryQQ.html',
-                controller : 'QQentryCapQQCtrl',
-                controllerAs : 'vm',
-        })
+        templateUrl: 'QQentryQQ/QQentryQQ.html',
+        controller : 'QQentryCapQQCtrl',
+        controllerAs : 'vm',
+    })
