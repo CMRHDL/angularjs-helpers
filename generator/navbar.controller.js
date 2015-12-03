@@ -2,17 +2,11 @@
   'use strict';
   angular.module('QQappQQ').controller('NavbarCtrl', NavbarCtrl);
 
-  NavbarCtrl.$inject = [ '$location', '$scope' ];
-  function NavbarCtrl($location, $scope) {
+  NavbarCtrl.$inject = [ '$location' ];
+  function NavbarCtrl($location) {
     var nav = this;
 
     nav.isActive = isActive;
-
-    var activeTab = getLocation();
-
-    $scope.$on('$locationChangeSuccess', function() {
-      activeTab = getLocation();
-    });
 
     // http://getbootstrap.com/components/
     nav.tabs = [
@@ -20,11 +14,11 @@ QQnavbarEntrysQQ
     ];
 
     function isActive(tab) {
-      return activeTab === tab ? 'active' : '';
+      return getLocation() === tab ? 'active' : '';
     }
 
     function getLocation() {
-      return $location.url().substr(1,$location.url().length) !== '' ? $location.url().substr(1,$location.url().length) : nav.tabs[0].name;
+      return $location.path().substring(1) || 'home';
     }
   }
 })();
