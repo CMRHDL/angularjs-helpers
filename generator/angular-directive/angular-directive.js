@@ -2,11 +2,13 @@
 
 var fs = require('fs');
 
+var basepath = process.argv[2];
+
 var replaceStrings = {
-  $App: process.argv[2],
-  $Ctrl: process.argv[3] + 'Ctrl',
-  $ServiceName: process.argv[3].toLowerCase(),
-  $Directive: 'my' + process.argv[3],
+  $App: process.argv[3],
+  $Ctrl: process.argv[4] + 'Ctrl',
+  $ServiceName: process.argv[4].toLowerCase(),
+  $Directive: 'my' + process.argv[4],
 }
 var dir = replaceStrings.$ServiceName;
 var name = replaceStrings.$ServiceName;
@@ -22,11 +24,11 @@ var cb = function(callBack) {
   }
 }
 
-var setController = function(data) { controller = data; fs.readFile('directive.js', cb(setDirective)); }
-var setDirective = function(data) { directive = data; fs.readFile('service.js', cb(setService)); }
+var setController = function(data) { controller = data; fs.readFile(basepath + '/directive.js', cb(setDirective)); }
+var setDirective = function(data) { directive = data; fs.readFile(basepath + '/service.js', cb(setService)); }
 var setService = function(data) { service = data; replace(); }
 
-fs.readFile('controller.js', cb(setController));
+fs.readFile(basepath + '/controller.js', cb(setController));
 
 function replace() {
   var arr = [controller, directive, service];
