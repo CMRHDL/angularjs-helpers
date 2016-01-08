@@ -1,10 +1,10 @@
 (function() {
   'use strict';
 
-  angular.module('QQApp').service('QQServiceName', QQServiceName);
+  angular.module('$App').service('$ServiceName', $ServiceName);
 
-  //QQServiceName.$inject = [''];
-  function QQServiceName() {
+  //$ServiceName.$inject = [''];
+  function $ServiceName() {
     var service = this; // jshint ignore:line
   }
 })();

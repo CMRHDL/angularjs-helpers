@@ -1,9 +1,9 @@
 (function() {
   'use strict';
-  angular.module('QQApp').controller('QQCtrl', QQCtrl);
+  angular.module('$App').controller('$Ctrl', $Ctrl);
 
-  QQCtrl.$inject = [ 'QQServiceName' ];
-  function QQCtrl(QQServiceName) {
+  $Ctrl.$inject = [ '$ServiceName' ];
+  function $Ctrl($ServiceName) {
     var vm = this;
   }
 })();

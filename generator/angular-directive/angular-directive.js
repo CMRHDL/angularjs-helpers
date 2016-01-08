@@ -3,13 +3,13 @@
 var fs = require('fs');
 
 var replaceStrings = {
-  QQApp: process.argv[2],
-  QQCtrl: process.argv[3] + 'Ctrl',
-  QQServiceName: process.argv[3].toLowerCase(),
-  QQDirective: 'my' + process.argv[3],
+  $App: process.argv[2],
+  $Ctrl: process.argv[3] + 'Ctrl',
+  $ServiceName: process.argv[3].toLowerCase(),
+  $Directive: 'my' + process.argv[3],
 }
-var dir = replaceStrings.QQServiceName;
-var name = replaceStrings.QQServiceName;
+var dir = replaceStrings.$ServiceName;
+var name = replaceStrings.$ServiceName;
 
 var controller, directive, service;
 
@@ -40,7 +40,7 @@ function replace() {
 }
 
 function makeDir() {
-  fs.mkdir(replaceStrings.QQServiceName, function() { write(); });
+  fs.mkdir(replaceStrings.$ServiceName, function() { write(); });
 }
 
 function write() {

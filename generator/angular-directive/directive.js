@@ -1,18 +1,18 @@
 (function() {
   'use strict';
-  angular.module('QQApp').directive('QQDirective', QQDirective);
+  angular.module('$App').directive('$Directive', $Directive);
 
-  QQDirective.$inject = [  ];
-  function QQDirective() {
+  $Directive.$inject = [  ];
+  function $Directive() {
     return {
-      controller : 'QQCtrl',
+      controller : '$Ctrl',
       controllerAs : 'c',
       restrict: 'A',
       scope: {
         foo: '@',
         bar: '=',
       },
-      require: ['ngModel', '^QQDirective'],
+      require: ['ngModel', '^$Directive'],
       bindToController: true,
       link: function(scope, element, attrs, ctrls) {
 
