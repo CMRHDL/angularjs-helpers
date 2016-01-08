@@ -1,10 +1,10 @@
-        .when('/', {
-            templateUrl: 'QQargs1QQ/QQargs1QQ.html',
-            controller : '${argsOneCap}Ctrl',
-            controllerAs : 'vm',
-        })
-        .when('/QQargs1QQ', {
-            templateUrl: 'QQargs1QQ/QQargs1QQ.html',
-            controller : 'QQargs1CapQQCtrl',
-            controllerAs : 'vm',
-        })
+    .when('/', {
+      templateUrl: 'QQargs1QQ/QQargs1QQ.html',
+      controller : '${argsOneCap}Ctrl',
+      controllerAs : 'vm',
+    })
+    .when('/QQargs1QQ', {
+      templateUrl: 'QQargs1QQ/QQargs1QQ.html',
+      controller : 'QQargs1CapQQCtrl',
+      controllerAs : 'vm',
+    })
