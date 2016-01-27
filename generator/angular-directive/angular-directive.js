@@ -5,13 +5,13 @@ var fs = require('fs');
 var basepath = process.argv[2];
 
 var replaceStrings = {
-  $App: process.argv[3],
-  $Ctrl: process.argv[4] + 'Ctrl',
-  $ServiceName: process.argv[4].toLowerCase(),
-  $Directive: 'my' + process.argv[4],
+  App: process.argv[3],
+  Ctrl: process.argv[4] + 'Ctrl',
+  ServiceName: process.argv[4].toLowerCase(),
+  Directive: 'my' + process.argv[4],
 }
-var dir = replaceStrings.$ServiceName;
-var name = replaceStrings.$ServiceName;
+var dir = replaceStrings.ServiceName;
+var name = replaceStrings.ServiceName;
 
 var controller, directive, service;
 
@@ -42,7 +42,7 @@ function replace() {
 }
 
 function makeDir() {
-  fs.mkdir(replaceStrings.$ServiceName, function() { write(); });
+  fs.mkdir(replaceStrings.ServiceName, function() { write(); });
 }
 
 function write() {
