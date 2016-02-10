@@ -4,19 +4,9 @@
     'use strict';
     angular.module('app').controller('${1:Ctrl}', ${1:Ctrl});
 
-    //${1:Ctrl}.\$inject = [ '' ];
+    ${1:Ctrl}.\$inject = [  ];
     function ${1:Ctrl}() {
         var vm = this;
-
-        // variables
-        vm.var = '';
-
-        // public functions
-        vm.someFunctionOne = someFunctionOne;
-
-        function someFunctionOne() {
-        }
-
     }
 })();
 ]]></content>

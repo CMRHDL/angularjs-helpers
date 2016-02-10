@@ -7,15 +7,16 @@
     ${1:DIRECTIVE}.\$inject = [  ];
     function ${1:DIRECTIVE}() {
         return {
+            bindToController: true,
             controller : 'CTRL',
             controllerAs : 'c',
-            restrict: 'A',
+            require: ['ngModel', '^${1:DIRECTIVE}'],
+            restrict: 'E',
             scope: {
                 foo: '@',
                 bar: '=',
             },
-            require: ['ngModel', '^${1:DIRECTIVE}'],
-            bindToController: true,
+            templateUrl : '../scripts/util/angular/chart/chart.html',
             link: function(scope, element, attrs, ctrls) {
 
                 var ngModel = ctrls[0];

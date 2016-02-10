@@ -5,15 +5,9 @@
 
     angular.module('app').service('${1:serviceName}', ${1:serviceName});
 
-    //${1:serviceName}.\$inject = [''];
+    ${1:serviceName}.\$inject = [  ];
     function ${1:serviceName}() {
-
         var service = this; // jshint ignore:line
-
-        service.variable = '';
-
-        service.functionOne = function () {
-        };
     }
 })();
 ]]></content>
