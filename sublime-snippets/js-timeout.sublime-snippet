@@ -1,10 +1,10 @@
 <snippet>
-    <content><![CDATA[
+  <content><![CDATA[
 setTimeout(function(){
-    ${1:content}
+  ${1:content}
 }, 100);
 ]]></content>
-    <tabTrigger>js-timeout</tabTrigger>
-    <scope>source.js</scope>
-    <description>JavaScript</description>
+  <tabTrigger>js-timeout</tabTrigger>
+  <scope>source.js</scope>
+  <description>JavaScript</description>
 </snippet>

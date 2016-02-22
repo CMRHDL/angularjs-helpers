@@ -1,8 +1,8 @@
 <snippet>
-    <content><![CDATA[
+  <content><![CDATA[
 console.log(${1:name});
 ]]></content>
-    <tabTrigger>console.log</tabTrigger>
-    <scope>source.js</scope>
-    <description>JavaScript</description>
+  <tabTrigger>console.log</tabTrigger>
+  <scope>source.js</scope>
+  <description>JavaScript</description>
 </snippet>

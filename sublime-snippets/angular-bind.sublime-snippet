@@ -1,8 +1,8 @@
 <snippet>
-    <content><![CDATA[
+  <content><![CDATA[
 <span data-ng-bind="::${2:vm}.resource['${1:key}']"></span>
 ]]></content>
-    <tabTrigger>angular-bind</tabTrigger>
-    <scope>text.html</scope>
-    <description>Angular.js</description>
+  <tabTrigger>angular-bind</tabTrigger>
+  <scope>text.html</scope>
+  <description>Angular.js</description>
 </snippet>

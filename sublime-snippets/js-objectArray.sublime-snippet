@@ -1,28 +1,28 @@
 <snippet>
-    <content><![CDATA[
+  <content><![CDATA[
 ${1:postcards} = [ {
-    ${2:propertyOne} : '',
-    ${3:propertyTwo} : '',
-    ${4:propertyThree} : '',
-    ${5:propertyFour} : ''
+  ${2:propertyOne} : '',
+  ${3:propertyTwo} : '',
+  ${4:propertyThree} : '',
+  ${5:propertyFour} : ''
 }, {
-    ${2:propertyOne} : '',
-    ${3:propertyTwo} : '',
-    ${4:propertyThree} : '',
-    ${5:propertyFour} : ''
+  ${2:propertyOne} : '',
+  ${3:propertyTwo} : '',
+  ${4:propertyThree} : '',
+  ${5:propertyFour} : ''
 }, {
-    ${2:propertyOne} : '',
-    ${3:propertyTwo} : '',
-    ${4:propertyThree} : '',
-    ${5:propertyFour} : ''
+  ${2:propertyOne} : '',
+  ${3:propertyTwo} : '',
+  ${4:propertyThree} : '',
+  ${5:propertyFour} : ''
 }, {
-    ${2:propertyOne} : '',
-    ${3:propertyTwo} : '',
-    ${4:propertyThree} : '',
-    ${5:propertyFour} : ''
+  ${2:propertyOne} : '',
+  ${3:propertyTwo} : '',
+  ${4:propertyThree} : '',
+  ${5:propertyFour} : ''
 } ];
 ]]></content>
-    <tabTrigger>js-objectArray</tabTrigger>
-    <scope>source.js</scope>
-    <description>JavaScript</description>
+  <tabTrigger>js-objectArray</tabTrigger>
+  <scope>source.js</scope>
+  <description>JavaScript</description>
 </snippet>

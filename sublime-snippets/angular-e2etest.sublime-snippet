@@ -1,32 +1,32 @@
 <snippet>
 	<content><![CDATA[
 (function() {
-    'use strict';
+  'use strict';
 
-    var ${1:TestPage} = require('./seed.${1:TestPage}.js');
+  var ${1:TestPage} = require('./seed.${1:TestPage}.js');
 
-    describe('app', function() {
-        var page;
+  describe('app', function() {
+    var page;
 
-        beforeEach(function() {
-            page = new ${1:TestPage}();
-        });
-
-        afterEach(function() {
-            browser.driver.get('logoutpage');
-        });
-
-        describe('Something', function() {
-            it('should do something', function() {
-                page.button.click();
-                browser.driver.sleep(1000);
-                expect(page.someColumn.getText()).toBe('something');
-            });
-        });
+    beforeEach(function() {
+      page = new ${1:TestPage}();
     });
+
+    afterEach(function() {
+      browser.driver.get('logoutpage');
+    });
+
+    describe('Something', function() {
+      it('should do something', function() {
+        page.button.click();
+        browser.driver.sleep(1000);
+        expect(page.someColumn.getText()).toBe('something');
+      });
+    });
+  });
 })();
 ]]></content>
 	<tabTrigger>angular-e2etest</tabTrigger>
 	<scope>source.js</scope>
-    <description>Angular</description>
+  <description>Angular</description>
 </snippet>

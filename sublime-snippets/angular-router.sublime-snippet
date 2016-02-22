@@ -1,29 +1,29 @@
 <snippet>
-    <content><![CDATA[
+  <content><![CDATA[
 (function() {
 
-    function config(\$routeProvider){
-      \$routeProvider.
-        when('/', {
-          templateUrl: 'index.html'
-        })
-        .when('/${1:routeOne}', {
-          templateUrl: '${1:routeOne}.html'
-        })
-        .when('/${2:routeOne}', {
-          templateUrl: '${2:routeOne}.html'
-        })
-        .otherwise({
-          redirectTo:'/'
-        });
-    }
+  function config(\$routeProvider){
+    \$routeProvider.
+    when('/', {
+      templateUrl: 'index.html'
+    })
+    .when('/${1:routeOne}', {
+      templateUrl: '${1:routeOne}.html'
+    })
+    .when('/${2:routeOne}', {
+      templateUrl: '${2:routeOne}.html'
+    })
+    .otherwise({
+      redirectTo:'/'
+    });
+  }
 
-    angular.module('app',['ngRoute']);
-    angular.module('app').config(config);
+  angular.module('app',['ngRoute']);
+  angular.module('app').config(config);
 
 }());
 ]]></content>
-    <tabTrigger>angular-router</tabTrigger>
-    <scope>source.js</scope>
-    <description>Angular</description>
+  <tabTrigger>angular-router</tabTrigger>
+  <scope>source.js</scope>
+  <description>Angular</description>
 </snippet>

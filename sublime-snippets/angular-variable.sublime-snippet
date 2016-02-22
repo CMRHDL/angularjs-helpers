@@ -1,8 +1,8 @@
 <snippet>
-    <content><![CDATA[
+  <content><![CDATA[
 vm.${1:name} = ${2:value};
 ]]></content>
-    <tabTrigger>angular-variable</tabTrigger>
-    <scope>source.js</scope>
-    <description>Angular</description>
+  <tabTrigger>angular-variable</tabTrigger>
+  <scope>source.js</scope>
+  <description>Angular</description>
 </snippet>

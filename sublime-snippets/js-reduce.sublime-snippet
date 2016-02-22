@@ -1,10 +1,10 @@
 <snippet>
-    <content><![CDATA[
-${1:object}.reduce(function(current, previous) {
+  <content><![CDATA[
+${1:object}.reduce(function(previous, current) {
 
 }, []);
 ]]></content>
-    <tabTrigger>js-reduce</tabTrigger>
-    <scope>source.js</scope>
-    <description>JavaScript</description>
+  <tabTrigger>js-reduce</tabTrigger>
+  <scope>source.js</scope>
+  <description>JavaScript</description>
 </snippet>

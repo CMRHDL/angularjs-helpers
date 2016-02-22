@@ -1,10 +1,10 @@
 <snippet>
-    <content><![CDATA[
+  <content><![CDATA[
 \$scope.\$on('${1:event}', function(event, args){
 
 })
 ]]></content>
-    <tabTrigger>angular-scopeon</tabTrigger>
-    <scope>source.js</scope>
-    <description>Angular</description>
+  <tabTrigger>angular-scopeon</tabTrigger>
+  <scope>source.js</scope>
+  <description>Angular</description>
 </snippet>
