@@ -1,0 +1,30 @@
+##########
+# git
+alias ga='git add .'
+alias gb='git branch'
+alias gcreate='git checkout -b'
+alias gd='git diff'
+alias gdc='git diff --cached'
+alias gdelete='git branch -D'
+alias gl='git log'
+alias go='git checkout'
+alias goc='git add . && git commit -m "temp" && git checkout'
+alias gr='git reset --soft HEAD~1 && git reset'
+alias gs='git status'
+alias got='git'
+alias gut='git'
+
+##########
+# git advanced
+alias gac='git add . && git commit -m "a"'
+alias gp='f(){ BRANCH="$(git rev-parse --abbrev-ref HEAD)"; sudo git pull origin $BRANCH && naf; };f'
+alias gpull='f(){ BRANCH="$(git rev-parse --abbrev-ref HEAD)"; sudo git pull origin $BRANCH && naf; };f'
+alias gpush='f(){ BRANCH="$(git rev-parse --abbrev-ref HEAD)"; sudo git push -u origin $BRANCH; };f'
+alias gpushf='f(){ BRANCH="$(git rev-parse --abbrev-ref HEAD)"; sudo git push -u origin $BRANCH -f; };f'
+
+[alias]
+    squash = "!f(){ git reset --soft HEAD~${1} && git commit --edit -m\"$(git log --format=%B --reverse HEAD..HEAD@{1})\"; };f"
+    fixup = "!f(){ MESSAGE=\"$(git log -1 --pretty=%B)\"; git add . && git reset --soft HEAD~1 && git commit -m\"$MESSAGE\"; };f"
+    fixuppush = "!f(){ MESSAGE=\"$(git log -1 --pretty=%B)\"; BRANCH=\"$(git rev-parse --abbrev-ref HEAD)\"; git add . && git reset --soft HEAD~1 && git commit -m\"$MESSAGE\" && sudo git push -u origin $BRANCH -f ; };f"
+
+    #git branch -vv | grep ": entfernt]" | awk '{ print $1 }' | xargs -n 1 git branch -D
