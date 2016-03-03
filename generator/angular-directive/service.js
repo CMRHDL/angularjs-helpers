@@ -3,7 +3,7 @@
 
   angular.module('App').service('ServiceName', ServiceName);
 
-  //ServiceName.$inject = [''];
+  ServiceName.$inject = [ ];
   function ServiceName() {
     var service = this; // jshint ignore:line
   }

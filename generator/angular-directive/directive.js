@@ -2,18 +2,19 @@
   'use strict';
   angular.module('App').directive('Directive', Directive);
 
-  Directive.$inject = [  ];
+  Directive.$inject = [ ];
   function Directive() {
     return {
-      controller : 'Ctrl',
-      controllerAs : 'c',
+      bindToController: true,
+      controller: 'Ctrl',
+      controllerAs: 'c',
       restrict: 'A',
       scope: {
         foo: '@',
         bar: '=',
       },
       require: ['ngModel', '^Directive'],
-      bindToController: true,
+      templateUrl: '..',
       link: function(scope, element, attrs, ctrls) {
 
         var ngModel = ctrls[0];
