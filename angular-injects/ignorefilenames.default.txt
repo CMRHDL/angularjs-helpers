@@ -1,2 +1,0 @@
-rename me to ignorefilenames.txt, delete this line and insert csv of ignored strings:
-jquery,.min.

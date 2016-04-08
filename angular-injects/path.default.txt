@@ -1,2 +1,0 @@
-rename me to path.txt, delete this line and insert path to workspace like:
-/home/some/path/workspace/importantproject/src/main/resource/scripts
