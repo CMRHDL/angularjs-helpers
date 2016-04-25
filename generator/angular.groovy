@@ -17,15 +17,15 @@ new File("index.html").text = new File(location + "/index.html").text.replace(/Q
 new File("navbar/navbar.controller.js").text =  new File(location + "/navbar.controller.js").text.replace(/QQappQQ/, this.args[0]).replace(/QQnavbarEntrysQQ/, navbarEntrys)
 
 def createFolders() {
-    new File("../test/spec/controllers").eachFileRecurse (FileType.FILES) { file ->
+    /*new File("../test/spec/controllers").eachFileRecurse (FileType.FILES) { file ->
         file.delete()
-    }
+    }*/
     new File("navbar").mkdir()
     new File("provider").mkdir()
     new File("style").mkdir()
-    println new File("../test/karma.conf.js").text
-    new File("../test/karma.conf.js").text.replace(/test\/mock\/\*\*\/\*\.js/, "app/**/*.spec.js")
-    new File("../test/karma.conf.js").text.replace(/'test\/spec\/\*\*\/\*\.js'/, "")
+    //println new File("../test/karma.conf.js").text
+    //new File("../test/karma.conf.js").text.replace(/test\/mock\/\*\*\/\*\.js/, "app/**/*.spec.js")
+    //new File("../test/karma.conf.js").text.replace(/'test\/spec\/\*\*\/\*\.js'/, "")
 }
 
 def createTemplates() {
@@ -40,7 +40,7 @@ def createTemplate(entry) {
 
     def html = new File("${entry}/${entry}.html")
     def js = new File("${entry}/${entry}.controller.js")
-    def spec = new File("../test/spec/controllers/${entry}.controller.js")
+    def spec = new File("${entry}/${entry}.controller.spec.js")
 
     def entryCap = entry.capitalize()
 
