@@ -11,11 +11,13 @@ if (process.argv.length === 3 || process.argv.length === 4) {
 }
 
 function createDirective() {
+  var loweredArg = process.argv[4].toLowerCase();
   var replaceStrings = {
     App: process.argv[3],
     Ctrl: process.argv[4] + 'Ctrl',
-    ServiceName: process.argv[4].toLowerCase(),
+    ServiceName: loweredArg,
     Directive: 'my' + process.argv[4],
+    TEMPLATE_PATH: loweredArg + '/' + loweredArg + '.html',
   }
   var dir = replaceStrings.ServiceName;
   var name = replaceStrings.ServiceName;

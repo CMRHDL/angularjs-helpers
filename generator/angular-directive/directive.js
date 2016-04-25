@@ -8,13 +8,13 @@
       bindToController: true,
       controller: 'Ctrl',
       controllerAs: 'c',
+      require: ['ngModel', '^Directive'],
       restrict: 'A',
       scope: {
         foo: '@',
         bar: '=',
       },
-      require: ['ngModel', '^Directive'],
-      templateUrl: '..',
+      templateUrl: 'TEMPLATE_PATH',
       link: function(scope, element, attrs, ctrls) {
 
         var ngModel = ctrls[0];
