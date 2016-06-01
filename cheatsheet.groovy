@@ -40,3 +40,11 @@ sql.eachRow(statement) { row ->
 }
 
 sql.close()
+
+// unzip + copy
+def ant = new AntBuilder()
+ant.unzip( src: 'foo.gz', dest: 'bar', overwrite: 'false' )
+ant.copy( file: new File(location + '/some.css'), tofile: new File(otherLocation + 'newname.css'))
+
+// newest file in folder
+def newestFile = new File( downloadPath ).listFiles()?.sort { -it.lastModified() }?.head()

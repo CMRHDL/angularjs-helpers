@@ -2,7 +2,7 @@
   'use strict';
   angular.module('QQappQQ').directive('myNav', myNav);
 
-  //myNav. = [ '' ];
+  myNav.$inject = [];
   function myNav() {
   return {
     restrict: 'E',

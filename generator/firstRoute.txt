@@ -1,6 +1,6 @@
     .when('/', {
       templateUrl: 'QQargs1QQ/QQargs1QQ.html',
-      controller : '${argsOneCap}Ctrl',
+      controller : 'QQargs1QQCtrl',
       controllerAs : 'vm',
     })
     .when('/QQargs1QQ', {

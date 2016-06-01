@@ -2,19 +2,24 @@ import groovy.io.FileType
 
 location = new File(getClass().protectionDomain.codeSource.location.path).parent
 
-createFolders();
-createTemplates();
-createRouting();
-createIncludesAndEntrys();
+if (this.args.length < 2) {
+    println "use: <scripts> app tab tab tab"
+} else {
+    createFolders();
+    createTemplates();
+    createRouting();
+    createIncludesAndEntrys();
+    new File("app.js").text = new File(location + "/app.js").text.replace(/QQappQQ/, this.args[0]).replace(/QQroutesQQ/, routes)
 
-new File("app.js").text = new File(location + "/app.js").text.replace(/QQappQQ/, this.args[0]).replace(/QQroutesQQ/, routes)
+    new File("navbar/navbar.html").text = new File(location + "/navbar.html").text
+    new File("style/style.css").text = new File(location + "/style.css").text
+    new File("navbar/navbar.directive.js").text = new File(location + "/navbar.js").text.replace(/QQappQQ/, this.args[0])
+    new File("navbar/navbar.controller.spec.js").text = new File(location + "/navbar.spec.js").text.replace(/QQappQQ/, this.args[0])
+    new File("index.html").text = new File(location + "/index.html").text.replace(/QQappQQ/, this.args[0]).replace(/QQincludeQQ/, includes)
+    new File("navbar/navbar.controller.js").text =  new File(location + "/navbar.controller.js").text.replace(/QQappQQ/, this.args[0]).replace(/QQnavbarEntrysQQ/, navbarEntrys)
+}
 
-new File("navbar/navbar.html").text = new File(location + "/navbar.html").text
-new File("style/style.css").text = new File(location + "/style.css").text
-new File("navbar/navbar.directive.js").text = new File(location + "/navbar.js").text.replace(/QQappQQ/, this.args[0])
-new File("navbar/navbar.controller.spec.js").text = new File(location + "/navbar.spec.js").text.replace(/QQappQQ/, this.args[0])
-new File("index.html").text = new File(location + "/index.html").text.replace(/QQappQQ/, this.args[0]).replace(/QQincludeQQ/, includes)
-new File("navbar/navbar.controller.js").text =  new File(location + "/navbar.controller.js").text.replace(/QQappQQ/, this.args[0]).replace(/QQnavbarEntrysQQ/, navbarEntrys)
+
 
 def createFolders() {
     /*new File("../test/spec/controllers").eachFileRecurse (FileType.FILES) { file ->

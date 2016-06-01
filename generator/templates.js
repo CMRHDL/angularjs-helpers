@@ -2,7 +2,7 @@
   'use strict';
   angular.module('QQappQQ').controller('QQentryCapQQCtrl', QQentryCapQQCtrl);
 
-  //QQentryCapQQCtrl.$inject = [ '' ];
+  QQentryCapQQCtrl.$inject = [];
   function QQentryCapQQCtrl() {
     var vm = this;
 
