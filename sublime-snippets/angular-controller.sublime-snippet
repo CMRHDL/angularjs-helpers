@@ -7,6 +7,18 @@
   ${1:Ctrl}.\$inject = [  ];
   function ${1:Ctrl}() {
     var vm = this;
+
+    /** Konstanten */
+
+    /** Einfache Variablen */
+
+    /** Komplexe Variablen */
+
+    /** Öffentliche Methoden */
+
+    /** Öffentliche Methoden Implementierung */
+
+    /** Hilfsmethoden */
   }
 })();
 ]]></content>

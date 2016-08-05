@@ -8,6 +8,18 @@
   ${1:serviceName}.\$inject = [  ];
   function ${1:serviceName}() {
     var service = this; // jshint ignore:line
+
+    /** Konstanten */
+
+    /** Einfache Variablen */
+
+    /** Komplexe Variablen */
+
+    /** Öffentliche Methoden */
+
+    /** Öffentliche Methoden Implementierung */
+
+    /** Hilfsmethoden */
   }
 })();
 ]]></content>

@@ -56,7 +56,7 @@ function createDirective() {
 
   function write() {
     fs.writeFile(dir + "/" + name + ".controller.js", controller);
-    fs.writeFile(dir + "/" + name + ".js", directive);
+    fs.writeFile(dir + "/" + name + ".directive.js", directive);
     fs.writeFile(dir + "/" + name + ".service.js", service);
     fs.writeFile(dir + "/" + name + ".html", "");
   }

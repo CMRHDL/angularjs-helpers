@@ -1,0 +1,11 @@
+<snippet>
+  <content><![CDATA[
+${1:vm} = ${1:vm};
+function ${1:vm}() {
+
+}
+]]></content>
+  <tabTrigger>angular-function</tabTrigger>
+  <scope>source.js</scope>
+  <description>Angular.js</description>
+</snippet>

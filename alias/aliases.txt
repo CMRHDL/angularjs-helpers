@@ -3,9 +3,8 @@
 alias ga='git add .'
 alias gb='git branch'
 alias gcreate='git checkout -b'
-alias gd='git diff'
+alias gd='git diffsofancy'
 alias gdc='git diff --cached'
-alias gdelete='git branch -D'
 alias gl='git log'
 alias go='git checkout'
 alias goc='git add . && git commit -m "temp" && git checkout'
@@ -14,17 +13,25 @@ alias gs='git status'
 alias got='git'
 alias gut='git'
 
+alias grebase='git rebase origin/master'
+alias grabort='git rebase --abort'
+alias grcontinue='git rebase --continue'
+alias gdelete='git branch --merged | grep -v "\*" | grep -v master | xargs -n 1 git branch -d'
+
 ##########
 # git advanced
 alias gac='git add . && git commit -m "a"'
-alias gp='f(){ BRANCH="$(git rev-parse --abbrev-ref HEAD)"; sudo git pull origin $BRANCH && naf; };f'
-alias gpull='f(){ BRANCH="$(git rev-parse --abbrev-ref HEAD)"; sudo git pull origin $BRANCH && naf; };f'
-alias gpush='f(){ BRANCH="$(git rev-parse --abbrev-ref HEAD)"; sudo git push -u origin $BRANCH; };f'
-alias gpushf='f(){ BRANCH="$(git rev-parse --abbrev-ref HEAD)"; sudo git push -u origin $BRANCH -f; };f'
+alias gp='f(){ BRANCH="$(git rev-parse --abbrev-ref HEAD)"; git pull origin $BRANCH; };f'
+alias gpush='f(){ BRANCH="$(git rev-parse --abbrev-ref HEAD)"; git push -u origin $BRANCH; };f'
+alias gpushf='f(){ BRANCH="$(git rev-parse --abbrev-ref HEAD)"; git push -u origin $BRANCH -f; };f'
 
 [alias]
-    squash = "!f(){ git reset --soft HEAD~${1} && git commit --edit -m\"$(git log --format=%B --reverse HEAD..HEAD@{1})\"; };f"
-    fixup = "!f(){ MESSAGE=\"$(git log -1 --pretty=%B)\"; git add . && git reset --soft HEAD~1 && git commit -m\"$MESSAGE\"; };f"
-    fixuppush = "!f(){ MESSAGE=\"$(git log -1 --pretty=%B)\"; BRANCH=\"$(git rev-parse --abbrev-ref HEAD)\"; git add . && git reset --soft HEAD~1 && git commit -m\"$MESSAGE\" && sudo git push -u origin $BRANCH -f ; };f"
+    squash = "!f() { git reset --soft HEAD~${1} && git commit --edit -m\"$(git log --format=%B --reverse HEAD..HEAD@{1})\"; };f"
 
-    #git branch -vv | grep ": entfernt]" | awk '{ print $1 }' | xargs -n 1 git branch -D
+    fixup = "!f() { MESSAGE=\"$(git log -n 1 --pretty=format:"%H")\"; BRANCH=\"$(git rev-parse --abbrev-ref HEAD)\"; git add . && git commit --fixup $MESSAGE && git push -u origin $BRANCH ; };f"
+
+    fixuppush = "!f() { MESSAGE=\"$(git log -1 --pretty=%B)\"; BRANCH=\"$(git rev-parse --abbrev-ref HEAD)\"; git add . && git reset --soft HEAD~1 && git commit -m\"$MESSAGE\" && git push -u origin $BRANCH -f ; };f"
+
+    repull = "!f() { BRANCH=\"$(git symbolic-ref --short HEAD)\"; git fetch origin $BRANCH; git branch -D __backup; git checkout -b __backup; git branch -D $BRANCH; git checkout $BRANCH; };f"
+
+    diffsofancy = "!f() { git diff --color ${1} | diff-so-fancy  | less --tabs=4 -RFX; }; f"

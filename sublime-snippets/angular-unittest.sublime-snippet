@@ -1,0 +1,21 @@
+<snippet>
+	<content><![CDATA[
+'use strict';
+describe('Name', function() {
+  beforeEach(module('app'));
+
+  var ${1:service};
+
+  beforeEach(inject(function(_${1:service}_) {
+    ${1:service} = _${1:service}_;
+  }));
+
+  it('should ...', function() {
+    expect(...).toEqual(...);
+  });
+});
+]]></content>
+	<tabTrigger>angular-unittest-service</tabTrigger>
+	<scope>source.js</scope>
+  <description>Angular</description>
+</snippet>

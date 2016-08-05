@@ -18,17 +18,17 @@
       },
       templateUrl : '../scripts/util/angular/chart/chart.html',
       link: function(scope, element, attrs, ctrls) {
+        /** Konstanten */
 
-        var ngModel = ctrls[0];
-        var ctrl = ctrls[1];
-        ctrl.model = ngModel;
+        /** Einfache Variablen */
 
-        // init Model
-        ngModel.\$setViewValue();
-        ngModel.\$render();
+        /** Komplexe Variablen */
 
-        element.bind("change",function(event){
-        });
+        /** Öffentliche Methoden */
+
+        /** Öffentliche Methoden Implementierung */
+
+        /** Hilfsmethoden */
       },
     };
   }
