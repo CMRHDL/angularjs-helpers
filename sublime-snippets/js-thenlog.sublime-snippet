@@ -1,0 +1,11 @@
+<snippet>
+  <content><![CDATA[
+then(res => {
+  console.log(res);
+  return res;
+})
+]]></content>
+  <tabTrigger>thenlog</tabTrigger>
+  <scope>source.js</scope>
+  <description>JavaScript</description>
+</snippet>

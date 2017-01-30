@@ -8,17 +8,17 @@
   function ${1:Ctrl}() {
     var vm = this;
 
-    /** Konstanten */
+    /* Konstanten */
 
-    /** Einfache Variablen */
+    /* Einfache Variablen */
 
-    /** Komplexe Variablen */
+    /* Komplexe Variablen */
 
-    /** Öffentliche Methoden */
+    /* Öffentliche Methoden */
 
-    /** Öffentliche Methoden Implementierung */
+    /* Öffentliche Methoden Implementierung */
 
-    /** Hilfsmethoden */
+    /* Hilfsmethoden */
   }
 })();
 ]]></content>
