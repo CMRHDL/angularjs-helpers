@@ -61,3 +61,12 @@ alias gpushf='f(){ BRANCH="$(git rev-parse --abbrev-ref HEAD)"; git push -u orig
     repull = "!f() { BRANCH=\"$(git symbolic-ref --short HEAD)\"; git fetch origin $BRANCH; git branch -D __backup; git checkout -b __backup; git branch -D $BRANCH; git checkout $BRANCH; };f"
 
     diffsofancy = "!f() { git diff --color ${1} | diff-so-fancy  | less --tabs=4 -RFX; }; f"
+
+
+alias ystart='yarn start'
+alias yadd='yarn add'
+alias mongostart='sudo service mongod start'
+alias mongostop='sudo service mongod stop'
+alias ..='cd ..'
+
+alias pretty='prettier --use-tabs false --print-width 80 --tab-width 2 --single-quote true --trailing-comma es5 --bracket-spacing true --jsx-bracket-same-line false --parser babylon --semi false --write "/home/user/path/**/*.js"'
